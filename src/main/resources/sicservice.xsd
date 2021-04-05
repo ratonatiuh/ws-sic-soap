@@ -1,0 +1,67 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tabiun.com.mx/demo/sic-service"
+           targetNamespace="http://tabiun.com.mx/demo/sic-service" elementFormDefault="qualified">
+
+	 <xs:element name="getOrdenCompraRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getOrdenCompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenCompra" type="tns:ordenCompra" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ordenCompra">
+        <xs:sequence>
+            <xs:element name="ocId" type="xs:string"/>
+            <xs:element name="fechaCreacion" type="xs:date"/>
+            <xs:element name="dependencia" type="xs:int"/>
+            <xs:element name="subdependencia" type="xs:int"/>
+            <xs:element name="areaSolicitante" type="xs:string"/>
+            <xs:element name="responsableAreaSolicitante" type="xs:string"/>
+            <xs:element name="contacto" type="tns:contacto"/>
+            <xs:element name="proyecto" type="tns:proyecto" />
+            <xs:element name="producto" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="egreso" type="tns:egreso" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="estado" type="xs:string"/>
+            <xs:element name="tipo" type="xs:string"/>            
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="proyecto">
+    	<xs:sequence>
+    		<xs:element name="nProyecto" type="xs:string"/>
+    		<xs:element name="nombreProyecto" type="xs:string" />
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="contacto">
+    	<xs:sequence>
+    		<xs:element name="correo" type="xs:string"/>
+    		<xs:element name="telefono" type="xs:string" />
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="product">
+        <xs:sequence>
+            <xs:element name="partida" type="xs:int"/>
+            <xs:element name="descripcion" type="xs:string"/>
+            <xs:element name="cantidad" type="xs:int"/>
+            <xs:element name="unidad" type="xs:string"/>
+            <xs:element name="precio" type="xs:float"/>
+            <xs:element name="iva" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>  
+    
+        <xs:complexType name="egreso">
+        <xs:sequence>
+            <xs:element name="gasto" type="xs:string"/>
+            <xs:element name="origen" type="xs:string"/>
+            <xs:element name="importe" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType> 
+
+</xs:schema>
